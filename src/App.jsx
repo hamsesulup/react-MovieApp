@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import Search from './Components/Search';
 import './index.css';
-  
+import Spinner from './Components/Spinner';
+import MovieCard from './Components/MovieCard';
 
 const apiUrl = 'https://api.themoviedb.org/3';
 
@@ -43,7 +44,7 @@ const App = () => {
         return;
       }
 
-      setMovieList(data);
+      setMovieList(data.results);
 
     } catch (error) {
       console.log(`Eror: ${error}`);
@@ -72,15 +73,21 @@ const App = () => {
         </header>
 
         <section className='all-movies'>
-          <h2>All Movies</h2>
+          <h2 className='mt-[20px]'>All Movies</h2>
 
-          {isLoading? (
-            <p className='text-whtite'>Loading ...</p>
+          {isLoading? ( 
+            <Spinner />
           ) : errorMessage ? (
             <p className='text-red-500'>{ errorMessage }</p>
           ) : (
-            <>
-            </>
+
+            <ul>
+             {movieList.map((movie) => (
+              <MovieCard key={movie.id}  movie={movie} />
+             ))
+             }
+            </ul>
+
           )}
           
         </section>
