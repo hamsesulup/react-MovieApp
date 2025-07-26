@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "hamsesulup.github.io/react-MovieApp/",
+  "homepage": "https://hamsesulup.github.io/react-MovieApp/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
